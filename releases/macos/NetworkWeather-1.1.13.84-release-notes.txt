@@ -1,7 +1,31 @@
-Network Weather for macOS
-Version 1.1.13.84 (Build 84)
-Released: 2026-03-01
+MACOS RELEASE
+February 25, 2026
+Version 1.1.13 (84)
+WiFi Roaming, In-Flight WiFi & Signal Alerts
 
-Version 1.1.13.84 (Build 84) - See release notes for details
+macOS
+Requires macOS 14+
 
-Release notes: https://networkweather.com/releases/macos/1.1.13/
+Download
+WiFi Roaming
+When your home or office has multiple access points, your Mac sometimes clings to a weak one. Network Weather now detects when a stronger access point is available and offers to switch you with one click. Its scans also give macOS fresh AP info, which often triggers automatic roaming without you doing anything. Scans only happen when your signal is already weak, so there's no battery impact when things are fine.
+Lost Connection Recovery
+When your Mac loses WiFi, Network Weather scans for nearby open or saved networks and suggests one you can connect to. If the new network has no internet, it switches you back automatically.
+Signal Advisory
+After 30 seconds of sustained weak signal, a banner warns you before your call drops. Clears automatically when signal recovers.
+In-Flight WiFi
+Detects United Airlines WiFi and shows your flight number, route, and aircraft type. Adjusts timeouts for satellite latency so you don't see false alerts at 35,000 feet.
+Captive Portals
+A new probe at check.networkweather.com catches portals that whitelist Apple's built-in check, which was causing false "Open" results on some networks. The portal banner now clears within seconds instead of lingering after you switch to a clean network.
+Improvements
+	•	Network status turns grey immediately when you switch routers, instead of showing stale green for up to 15 seconds
+	•	Routers at the same IP address (e.g., two 192.168.1.1 networks) are correctly re-identified on switch
+	•	New "Force Refresh" menu item triggers a full network rediscovery
+	•	Charging bolt icon on battery when plugged in; cleaner wattage display
+Bug Fixes
+	•	Fixed false "Moderate Filtering" and "DNS-over-TLS Blocked" on networks that aren't filtering
+	•	Fixed false impairment warnings from virtual gateway MAC addresses (common on Meraki networks)
+	•	Fixed false "Network Equipment Dropping Packets" alert after WiFi reconnection
+	•	Fixed egress restriction false positives on satellite connections
+	•	Fixed AT&T iPhone hotspot (172.20.10.1) not detected as tethering
+	•	Fixed USB tethering not showing full iPhone hotspot details
