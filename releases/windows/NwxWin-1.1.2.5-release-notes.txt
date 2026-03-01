@@ -1,0 +1,23 @@
+WINDOWS RELEASE
+January 28, 2026
+Version 1.1.2 (5)
+Welcome Flow & Diagnostics
+
+Windows
+Requires Windows 11
+
+Download (x64)
+New Welcome Flow
+	•	Guided onboarding — New first-run experience walks you through setup with a live network scan
+	•	Network discovery — See your WiFi, gateway, ISP, and VPN detected in real-time during setup
+	•	Personalized setup — Tell us about your connectivity problems and we'll tailor monitoring to your needs
+Radio Environment Analysis
+	•	Channel congestion — Visualize which WiFi channels are crowded in your area
+	•	Interference detection — Identify overlapping networks that may impact performance
+	•	Band recommendations — Get suggestions for optimal channel selection
+Improved Reliability
+	•	Sentry crash reporting — Automatic crash reports help us fix issues faster
+	•	Better diagnostics — More detailed logging for troubleshooting network issues
+Other Improvements
+	•	Performance optimizations for background monitoring
+	•	Updated dependencies for improved stability
