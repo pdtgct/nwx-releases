@@ -1,0 +1,36 @@
+MACOS RELEASE
+March 5, 2026
+Version 1.1.14 (85)
+Per-Service Traceroute, Health Snapshots & Enterprise Deployment
+
+macOS
+Requires macOS 14+
+
+Download
+Per-Service Traceroute
+Every service in the detail panel now runs its own live traceroute instead of sharing a single global trace. You see the full network path to each destination as it's discovered, with reverse DNS, ASN lookup, and hop category classification (WiFi, LAN, ISP, Transit, Destination). After the trace completes, aggressive per-hop pinging kicks in to populate RTT, loss, jitter, and probe count columns in real time. Hostname targets resolve DNS upfront so you see the IP even when the destination is unreachable.
+Health Snapshots for IT Admins
+A curated summary of device health (WiFi signal, gateway status, system info, network quality, active issues) is pushed to the server every 5 minutes. IT admins and MSPs can monitor their fleet's network health through the Partner API without waiting for users to report problems.
+Notifications
+Network Weather now sends macOS notifications for critical network events: severe impairments, stronger nearby access points, better available networks, and very weak WiFi signal. Notifications are configurable via the notificationsEnabled and notificationMinSeverity keys in config.json.
+Open UI at Launch
+A new menu bar toggle lets you uncheck "Open UI at Launch" so the app starts silently into the menu bar without opening a window. Useful for managed deployments where the app should run quietly in the background. Also configurable via openUIAtLaunch in config.json.
+Enterprise Deployment
+The installer package is now JAMF-ready for zero-touch deployment. The postinstall script no longer auto-launches the app (which broke silent installs), and a <must-close> tag prompts users to quit before an upgrade. A new ENTERPRISE_DEPLOYMENT.md guide covers PPPC profiles, disabling Sparkle auto-updates, managed LaunchAgents, and uninstall procedures.
+Improvements
+		Intermediate hops in the destination's network (e.g., Google backbone routers) now correctly classify as "Destination" instead of "Transit"
+		Native markdown rendering in the Sparkle update dialog
+		Captive portal and update banners use consistent severity-tinted styling
+		Public IP and ISP info refresh automatically after accepting captive portal terms
+		Share export now includes battery details, WiFi signal advisory, culprit callout, and offline reason
+		Smoother header logo rendering with high-res source images
+Bug Fixes
+		Fixed credential dialog password AutoFill popover appearing greyed out (macOS Passwords now works in gateway login dialogs)
+		Fixed Tailscale showing as a VPN when running in mesh-only mode with no exit node
+		Fixed 2000ms app hangs caused by uncached system calls during topology rebuilds
+		Fixed stale "Filtered" badges appearing briefly after wake-from-sleep
+		Fixed hop display cutting off before showing all hops through the destination
+		Fixed overly strict jitter thresholds penalizing normal home network jitter in Check My Network grading
+		Fixed primary link always showing WiFi even when Ethernet is preferred in system network service order
+		Fixed ISP name showing raw ASN identifiers instead of human-readable names
+		Fixed onboarding window briefly reappearing on launch
