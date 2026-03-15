@@ -1,0 +1,42 @@
+MACOS RELEASE
+March 15, 2026
+Version 1.1.15 (88)
+More Routers, Security Audits & Keyboard Shortcuts
+
+macOS
+Requires macOS 14+
+
+Download
+More Router Support
+Network Weather now auto-detects and shows detailed info for Actiontec, Linksys (E-series), MikroTik, and Netgear routers. That brings the total to eight supported brands alongside UniFi, ASUS, TP-Link, and Eero.
+Once detected, you can log in with your router's admin password to see WAN status, connected devices, wireless config, and port stats right inside Network Weather. Each vendor also gets an automatic security audit that flags real problems: outdated firmware, WEP still enabled, remote management left on, WPS active, and more.
+TP-Link routers now show WAN IP, firmware version, uptime, and serial number after login (previously only available for UniFi).
+Security Audits
+The gateway detail panel now runs vendor-specific security checks when you log in. These flag things that actually matter: end-of-life hardware with no security patches, insecure WiFi encryption, exposed admin interfaces, known CVEs, and misconfigurations like double-NAT or WAN IP conflicts. Each finding explains what's wrong and what to do about it.
+Keyboard Shortcuts
+Cmd+Q now quits the app (like every other Mac app). Previously it just hid the window, which confused people. Cmd+W closes the window while monitoring continues in the menu bar. On the first window close, a notification reminds you that Network Weather is still running up top.
+WiFi Link Warnings
+The WiFi status indicator and topology link now warn you when your connection quality is limited by the access point. If your Mac supports Wi-Fi 6 but you're connected to an 802.11g AP, the link turns orange. WEP security also shows as a warning instead of neutral blue.
+Ethernet Diagnostics Installer
+An optional one-click installer unlocks deeper Ethernet diagnostics: switch name and port identification via LLDP, ARP-based device discovery, and DHCP monitoring. An in-app prompt appears when you're on a wired connection and these features would help. Enterprise admins can suppress the prompt via MDM.
+MSP & Enterprise
+		Managed deployments can set mspId and orgId in config to auto-enroll devices into an organization on first check-in
+		Health snapshots now include full network quality metrics, device identity, interface details, and radio environment — IT admins see richer data in the Partner Dashboard within 30 seconds of a device coming online
+		Opt-in debug log upload: the feedback dialog lets users attach a compressed debug log to help IT teams diagnose issues remotely
+Improvements
+		Router login dialog shows your router's admin URL as a clickable link, so you can check your password manager for the right credentials
+		Router model and firmware shown before login for vendors that expose this info (Netgear, Linksys)
+		Cleaner title bar with no more duplicate "Network Weather" label
+		Your ISP's favicon appears in the topology instead of a generic icon
+		ISP status page link is clearer; QR code shows automatically during outages
+Bug Fixes
+		Fix TP-Link login failing on recent firmware updates
+		Fix TP-Link requiring re-authentication on every app restart
+		Fix health snapshots not being sent to the server
+		Fix some routers incorrectly identified as UniFi
+		Fix WiFi generation warnings not appearing when connected to older access points
+		Fix MikroTik model name not showing after login
+		Fix router vendor name briefly disappearing after detection
+		Fix app hang that could occur during network path analysis
+		Fix health snapshot network quality always reporting as unknown
+		Fix stale server endpoints persisting across app upgrades — the app now checks in with the server on every launch to ensure fresh configuration
