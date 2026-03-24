@@ -1,0 +1,51 @@
+MACOS RELEASE
+March 23, 2026
+Version 1.2.0 (94)
+Scan Your Network, See What's Wrong, Know What to Do
+
+macOS
+Requires macOS 14+
+
+Download
+Scan Your Network in One Click
+Network Weather now has a Scan tab. Hit the button and in a few seconds you'll see a plain-language report of what's going on with your network: WiFi signal and security, router health, DNS configuration, and internet path quality.
+The default scan is completely passive and safe. It reads what your Mac already knows about the network without sending any extra traffic. If you want a deeper look (speed test, bufferbloat measurement, active gateway audit), you can opt into a Deep Scan with a clear warning about what it does.
+New Tabbed Interface
+The app is now organized into four tabs:
+	•	Scan runs network checks and shows results
+	•	Findings collects every issue Network Weather has found, ranked by severity and what you can do about it. Dismiss findings you've addressed; they stay archived at the bottom.
+	•	Status is the live topology view you already know, continuously monitoring your connection
+	•	Settings for services, preferences, and gateway credentials
+WiFi Intelligence
+The new WiFi Insight Engine analyzes the radio signals your Mac receives from nearby access points. It reads the raw 802.11 Information Elements that access points broadcast and translates them into plain language:
+	•	What WiFi generation your router supports (and whether your connection is being held back)
+	•	Whether fast roaming is configured across multiple access points
+	•	Channel congestion and interference from neighbors
+	•	Security posture: WPA3, WPA2, WEP, or open
+	•	AP capability score (0-13) covering beamforming, MU-MIMO, power management, and more
+	•	WiFi 7 and 6 GHz band detection
+These show up as findings in the Findings tab, ranked by what you can actually do about them.
+Security and Performance, Separated
+Previously, the share report could say "Critical" (because of open WiFi) while the topology showed green (because your speed was fine). That was confusing.
+Now security and performance are independent:
+	•	The topology shows network performance: latency, packet loss, connectivity
+	•	A security banner appears when there's a security concern: open or weak WiFi encryption, end-of-life router firmware
+	•	The share report has separate "Network Performance" and "Security" sections
+Your network can be fast and insecure at the same time. Now the app shows both clearly.
+Router Diagnostics
+	•	UPnP discovery now runs automatically when your router is detected, surfacing WAN status, link speed, traffic counters, and port mappings without needing to log in
+	•	A persistent background listener catches routers (like some D-Link models) that only announce themselves periodically instead of responding to queries
+	•	Firmware update detection for Linksys routers: the gateway segment turns orange when a newer firmware is available
+	•	Authority-layered data: router information from different sources (network detection, UPnP, authenticated login) is now merged intelligently. Authenticated data is never overwritten by less reliable sources, fixing issues where firmware versions would flicker or login state would reset.
+Improvements
+	•	Topology view no longer twitches or jumps when selecting segments
+	•	Channel utilization thresholds tightened to match IEEE research (warning at 50%, previously 70%)
+	•	40 MHz channel width on 2.4 GHz flagged as a problem (it monopolizes over half the spectrum)
+	•	WPS vulnerability detection: unconfigured WPS flagged as critical (vulnerable to PIN brute-force)
+	•	Service settings toggles now respond correctly
+Bug Fixes
+	•	Fix all scanned networks incorrectly labeled "WPA3 Personal"
+	•	Fix BPF helper installer requiring Rosetta on Apple Silicon
+	•	Fix stale server endpoints persisting across app upgrades
+	•	Fix D-Link firmware version not parsing correctly
+	•	Fix gateway data being overwritten every 30 seconds by snapshot builder
