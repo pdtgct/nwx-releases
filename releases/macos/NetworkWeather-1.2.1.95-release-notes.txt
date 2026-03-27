@@ -1,0 +1,26 @@
+MACOS RELEASE
+March 26, 2026
+Version 1.2.1 (95)
+Know Your Devices, Share With IT
+
+macOS
+Requires macOS 14+
+
+Download
+Findings That Make Sense
+The biggest complaint about 1.2.0 was that scan results could be overwhelming. A house with a dozen IoT devices would produce a dozen nearly-identical "slow port" findings, each showing only a raw MAC address. Not helpful.
+Now every finding tells you which device it's about. Instead of "Slow Port: aa:bb:cc:11:22:33 on Port 8," you'll see "Aqara Hub M2: uplink slow (Port 8 on Rear Switch, 100 Mbps)." Network Weather looks up the device manufacturer and pulls hostnames from your router when available, so you can tell your smart thermostat from your printer at a glance.
+When multiple devices have the same problem, they're grouped under a single card with a count badge. "Slow ports (11 devices)" collapses the noise. Click to expand and see each one.
+IT Teams Can See Your Findings
+Scan results now sync to the server automatically as part of the regular health snapshot. If your IT team uses the Network Weather Partner Dashboard, they'll see per-device findings with severity badges, category grouping, and the same device identification context you see locally, including which switch port each device is on.
+There's also a new API endpoint for programmatic access, so IT teams can pull findings into their own tools.
+Better Router Identification
+Routers that aren't one of the nine supported vendors (UniFi, ASUS, TP-Link, etc.) used to show up as "Unknown" everywhere. Now the app falls back to the manufacturer name from the router's MAC address. Your Eero, Google Wifi, or Arris cable modem will at least show the brand name instead of a blank.
+Stability
+Fixed a crash that could happen during router data collection on UniFi networks. The app was trying to fetch multiple pieces of router data at the same time, which occasionally triggered a memory error. Data collection is now sequential, which is slightly slower but doesn't crash.
+Everything Else
+	•	MAC addresses display in readable format (aa:bb:cc:dd:ee:ff) instead of raw hex
+	•	Switch ports show as "Port 5" instead of confusing profile names like "Data" or "All"
+	•	Finding text is selectable and copyable
+	•	Button click targets are more forgiving
+	•	Cable upgrade recommendations updated to Cat6
