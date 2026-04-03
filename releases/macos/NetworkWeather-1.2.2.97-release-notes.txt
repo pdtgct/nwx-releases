@@ -1,0 +1,38 @@
+MACOS RELEASE
+April 2026
+Version 1.2.2 (97)
+Eero, Google Nest, and Smoother Setup
+
+macOS
+Requires macOS 14+
+
+Download
+Eero Mesh Support
+Network Weather now works with Amazon Eero mesh systems. Without logging in, the app identifies your Eero model, shows its WAN status, and checks for open ports. After signing in with your Eero account, you get the full picture: signal strength and connection quality for every device on each mesh node, backhaul health between nodes, security checks (WPA3, SQM, firmware), and end-of-life warnings for older Eero models.
+When you're connected to an Eero mesh, roaming suggestions show room names instead of technical identifiers. "Move closer to Kitchen" is more helpful than "try BSSID ...A4:F2."
+The Link detail view shows your mesh path: which node you're connected to, how it connects back to the gateway, and whether each hop is wired or wireless.
+Google Nest WiFi Detection
+Google Wifi and Nest Wifi routers are now automatically detected. The app identifies your exact model and firmware version, covering every generation from the original OnHub (2015) through Nest Wifi Pro (2022).
+One Installer, No Extra Steps
+The installer now sets up everything in one step. Previously you had to download and run a separate helper to enable advanced network monitoring (ARP, LLDP, DHCP). Now the main installer handles it all. If you already have Wireshark's packet capture tools installed, the app detects that and skips the duplicate setup.
+Permission Guidance
+If macOS blocks Network Weather from accessing your local network, the app now tells you right away and shows you exactly where to fix it in System Settings. Previously, some features would quietly stop working with no explanation.
+Better Router Login Flow
+Before running a scan, the app now checks whether your router is supported but not logged in. If so, it lets you know that logging in will give you more detailed results, and offers a quick path to do so.
+IPv6 and Carrier-Grade NAT
+The app now correctly handles IPv6 networks. If your ISP uses IPv6 (common with providers like Sonic), network classification and captive portal detection work properly instead of getting confused by the address format. Carrier-grade NAT detection is also improved for mobile hotspot users.
+Smoother, Faster
+Several sources of the app freezing or hanging have been fixed:
+	•	The app no longer freezes briefly when checking for VPN software or looking up network details
+	•	The topology view rebuilds less often and more efficiently
+	•	Macs with Thunderbolt docks or USB-C Ethernet adapters now work correctly (previously some features silently failed on non-standard network setups)
+Smarter UPnP Discovery
+The app now checks what each router actually supports before asking it questions. This eliminates repeated failed requests that were slowing down the connection to some routers (especially Eero).
+Everything Else
+	•	Roaming suggestions show access point names (from WiFi beacons) even without router login
+	•	Radio Details panel shows 50+ WiFi capability fields for your access point
+	•	Pre-scan prompt when router login would improve results
+	•	Fixed: roaming suggestions could get stuck after switching access points
+	•	Fixed: mesh network latency thresholds were too strict, causing false warnings
+	•	Fixed: router logout didn't fully disconnect the session
+	•	Enterprise: all 24 config settings available via MDM managed preferences
