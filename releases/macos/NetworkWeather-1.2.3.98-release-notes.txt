@@ -1,0 +1,81 @@
+MACOS RELEASE
+April 18, 2026
+Version 1.2.3 (98)
+Orbi mesh, cable modems, and cleaner alerts
+
+macOS
+Requires macOS 14+
+
+Download
+Works with Netgear Orbi mesh
+Network Weather now supports Netgear Orbi mesh Wi-Fi. After you sign in to your router, the app shows your whole mesh. You can see each satellite, how strong its link to the router is, and whether it is connected by wire or over Wi-Fi. You can also see which of your devices is on which satellite.
+The Link detail view shows your path through the mesh. If your Mac is on Satellite 2, you see the full chain back to the main router, with the signal quality of each hop.
+Some of this works even without signing in. Orbi satellites quietly broadcast parent-and-child info in their Wi-Fi signal. Network Weather reads that info for any nearby Orbi.
+A deep scan on an Orbi network checks satellite signal, firmware, router load, double NAT, and the internet link.
+Your cable modem, now visible
+If your router sits behind a cable modem, Network Weather now talks to the modem too. It checks the modem at the same time it checks your router. It can tell the brand of modem from its login page, even without a password.
+If you save the modem password, Network Weather can also show:
+	•	Signal strength and noise on each channel
+	•	Recent error events (T3 timeouts and MDD failures)
+	•	How long the modem has been on since its last reboot
+The Cable Modem section shows up in the internet part of your topology. Colors follow the official cable modem spec. On networks with no cable modem, the check times out quickly and stays hidden. If the wrong password is saved, Network Weather stops trying right away so it cannot lock you out.
+Warnings for old gear
+Network Weather now warns you when a device is too old to get security updates. It checks in three ways:
+	1	Certain. Looks up your device in lists from the maker. We ship lists for Linksys (1,007 models), Netgear (2,096), ASUS (310), D-Link (619), TP-Link (169), UniFi (46), and Eero.
+	2	Probably. Falls back to a community list with 1,077 more models across 327 brands, including ZyXEL, TRENDnet, EnGenius, and Buffalo.
+	3	Best guess. Uses clues like Wi-Fi version and certificate age when the device is not in any list.
+Each warning shows how sure we are, so you know how much to trust it.
+Logos for your internet provider and VPN
+Network Weather ships with 55 US internet provider logos. These include the big ones like Xfinity, Spectrum, AT&T, Verizon, and T-Mobile, plus regional fiber, city networks, and fixed wireless. The logos show up right away. They work even when you are offline.
+The internet node now shows the brand name you know, like "Xfinity" instead of "Comcast Cable Communications, Inc."
+There are also 23 VPN logos built in, for NordVPN, Surfshark, Mullvad, Proton VPN, ExpressVPN, Tailscale, Cloudflare WARP, WireGuard, and more. They show up whenever a VPN is on. If your VPN is not on the list, Network Weather tries to grab the VPN company's icon from the web.
+Router health in the main view
+The Gateway section now shows how hard your router is working: CPU, memory, how many devices are connected, and a short mesh summary like "2 satellites, healthy." These fields work with any router brand we support.
+LAN path always visible
+The LAN path used to hide behind a click. It is now open by default, just above Radio Details. Each hop shows live latency, loss, and jitter. Access points and switches get pinged on their own, so every hop shows real numbers, not just the router. When a slow port is on a known UniFi device, Network Weather now says "cable or connector problem" instead of the generic warning, because all UniFi ports are gigabit.
+More at a glance in the Link panel
+Three Wi-Fi fields that used to be hidden inside Radio Details are now right in the Link panel:
+	•	Channel Busy sits next to Noise. It turns yellow above 50% and red above 80%. This helps you tell the difference between radio noise (nearby devices making static) and a crowded channel (everyone else using the same air time).
+	•	Stations on AP shows how many other devices are sharing your access point.
+	•	Fast Roaming shows which modern roaming features your access point supports, as a short row of badges. It is hidden when the access point supports none.
+A new high-severity alert fires when your channel is more than 80% busy. Now the colored bar in the Link panel and the Findings tab agree. You will see this most often on hotel Wi-Fi at peak hours, in crowded apartment buildings on 2.4 GHz, and in busy coffee shops.
+Fewer false alarms
+A few alerts were showing up when they should not have:
+	•	Fast-roaming warnings on single-router networks. Some routers have three radios and look like three separate devices. Network Weather now groups the radios back into one router.
+	•	Channel-width warnings that mixed radios. A warning like "supports 320 MHz, running at 20 MHz" was wrong because the big number came from one radio and the small number came from another. Those cross-radio comparisons are turned off.
+	•	"Connection dropouts." The macOS counter behind this alert fires even on a wired 10-gigabit fiber link. The alert was doing more harm than good. It is off until we figure out what the counter actually means.
+	•	Duplicate roaming warnings. The same roaming issue could show up as both a warning and a note. Only the more serious one shows now.
+	•	Your own Mac showing up as its own switch. Virtual parts inside macOS (from Parallels, Docker, and others) were sending out network-discovery packets that came right back in. The Link panel used to show your Mac as its own switch. Fixed.
+Small quality-of-life changes
+	•	Shorter setup. The "What network issues bother you?" question was dropped. Almost no one was filling it in, and we were not saving the answers. Setup is now welcome, permissions, done.
+	•	Better default network name. New networks used to be named after your street address, like "926 Madison Ave." That is personal info, and the location lookup was often wrong anyway. Now networks get a name based on your router, like "UDM-Pro 80:24:51." It stays the same every time you come home, and it does not leak your address.
+	•	Debug "Reset and Show Onboarding" works on the first click. It used to need two clicks because of a timing bug.
+Friendlier gaming and video scores
+A connection running near a gigabit with zero packet loss was getting "Poor" for gaming and "Marginal" for video. The problem was ping jitter. Most home routers put ping traffic last in line, so ping jitter runs 25 to 40 ms even on great networks. Our old limits were too tight. The new limits are 50 ms (Ready) and 75 ms (Marginal).
+Wi-Fi info fixes
+We went through the Wi-Fi parser line by line and checked it against the code used in Linux. Eight small bugs were fixed:
+	•	Routers with two antennas were sometimes counted as if they had more
+	•	One Wi-Fi 6 flag was read from the wrong bit
+	•	Target Wake Time bits were read from the wrong byte
+	•	Some older 160 MHz and 80+80 MHz modes were being ignored
+	•	Wi-Fi 7 channel width was read from the wrong byte
+	•	A newer location-helper field was read from the wrong byte
+	•	A Multi-Link address was off by one
+	•	A Wi-Fi 7 flag was turning on when it should not
+More than 30 new tests make sure these bugs do not come back. A new Radio Details panel shows over 50 Wi-Fi fields in one place: identity, capabilities, Wi-Fi 7, channel and load, roaming, security, and unknown vendor tags.
+Performance fixes
+	•	Smooth scrolling on big networks. Some of the Insights code was running too slowly and pinning CPU at 100% on meshes with 50 or more devices. The list now builds once per screen update. A test with 195 findings builds in about 2 ms.
+	•	No more wasted probes on phone hotspots. When you tethered to your phone, Network Weather kept trying to probe a router that was not really there. Those probes piled up and could freeze the app. Network Weather now knows it is on a phone hotspot and skips the checks.
+	•	Memory leak fixed. Older builds slowly grew to 3.5 GB after three days of running. Wi-Fi scan results were not being cleaned up in time. They are now.
+Internet and path fixes
+	•	Right public IP on T-Mobile and other carrier-grade NAT networks. The app now asks a website what your public IP is instead of asking DNS. The answer matches what a browser shows.
+	•	Right ISP when a VPN is on. The app used to sometimes say Google was your ISP when your router used Google DNS and a VPN was on. Fixed.
+	•	The "Checking traffic blocks..." spinner no longer gets stuck. It used to spin forever when a VPN was on.
+	•	Windows now come to the front. Windows opened from the menu bar sometimes stayed hidden. Fixed.
+	•	Disk space matches Finder. Free space now includes the space macOS can get back on demand, so the number matches Finder.
+	•	The bogus "WAN 8 Mbps" alert on TP-Link routers is gone. The router's firmware was returning a fake placeholder number. Network Weather now ignores it when real router data is available.
+More depth for Orbi, cable modems, and Eero
+A few router integrations got new checks:
+	•	Orbi checks for weak satellite signals, firmware mismatch between router and satellites, high router load, double NAT, and whether the WAN Ethernet cable is plugged in.
+	•	Orbi telemetry shows daily, weekly, and monthly bandwidth use, QoS, parental control, and WAN link speed.
+	•	Cable modem checks follow the DOCSIS spec for channel quality and filter events by severity.
