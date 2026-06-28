@@ -1,0 +1,32 @@
+Windows Release
+June 1, 2026
+Version 1.2.1 (107)
+Smarter DNS Checks, Easier Sign-In & Faster Names
+Windows
+Requires Windows 11
+-
+Download (x64)
+This update is all about helping you understand your home internet, not just see that something is wrong. Here is what is new on your Windows device today:
+1. Find Out Why Your Internet Acts Up
+Sometimes a website will not load even though your WiFi looks fine. Often the problem is DNS (think of it as the phone book that turns a name like google.com into a number your computer can call).
+Before, if a DNS check failed, the app just said it failed. Now it tells you the likely reason, such as:
+- Your router is blocking these requests
+- Your internet provider is getting in the way
+- A setting on your own PC is the cause
+That makes it much easier to know where to look, instead of guessing.
+2. Easier Router Sign-In
+Signing in to your router lets the app show you a lot more about your network.
+- The sign-in box is now right at the top of your home network details, so it is easy to find.
+- Before you run a deep scan, the app gives you a gentle reminder to sign in so your results are as complete as possible.
+- Once you sign in, the scan starts on its own. No extra clicks.
+- The window now opens a little bigger, so nothing gets cut off.
+- If your router's address changes (which can happen after it restarts), the app now stays signed in and keeps showing your full results, instead of quietly coming up empty.
+3. Device Names Show Up Faster
+The maker of each gadget on your network (like the brand of a phone, TV, or printer) now appears right away, even when you have no internet connection. It also no longer causes a short freeze when the app starts up.
+4. Clearer Messages for Some Routers
+A few router brands cannot be signed into from the app just yet. Before, that could look like something went wrong. Now the app says so plainly, and reminds you that your network is still being checked either way.
+5. Smoother and Safer
+We made many behind-the-scenes fixes to keep the app stable and to tighten security. You should not notice these directly, just a more dependable app.
+We also tidied up the gateway view, so your router's name and logo no longer show up several times, and we trimmed the download so it installs a little faster.
+
+Full release notes: https://networkweather.com/releases/windows/1.2.1/
