@@ -1,0 +1,48 @@
+Windows Release
+January 26, 2026
+Version 1.1.0 (2)
+Beta Release
+Windows
+Requires Windows 11
+-
+Download (x64)
+Beta Release
+This is the first public beta of Network Weather for Windows. It brings the core diagnostic capabilities of the macOS app to Windows 11.
+What's New
+GeoIP & Location
+- GeoIP integration — IP geolocation with distance to destination
+- Color-coded distance display — Visual indication of how far your traffic travels
+- Bogon detection — Identifies private and reserved IP ranges
+Service Monitoring
+- ICMP probes — Monitor latency, packet loss, and jitter
+- HTTP/HTTPS probes — Full timing breakdown (DNS, connect, TLS, TTFB)
+- TLS certificate monitoring — Expiry warnings at 30/7 day thresholds
+Update System
+- In-app update notifications — Urgency-based banner styling
+- One-click download — Download updates via system browser
+Gateway Integration
+- UniFi MFA support — Two-factor authentication via TOTP
+- Gateway naming — Shows UniFi model names (e.g., "UDMPRO")
+- Secure credential storage — DPAPI encryption for passwords
+Intelligence Features
+- Hysteresis state machine — Prevents UI flapping on transient network issues
+- Historical analysis — 360-sample ring buffer with multiple time windows
+- Two-phase fault attribution — Accurate culprit detection
+Connectivity Detection
+- VPN detection — Identifies Tailscale, WireGuard, Cloudflare WARP, and more
+- Split tunnel detection — Distinguishes full vs. split tunnel configurations
+- Captive portal detection — DNS hijacking and HTTP redirect detection
+Modern React UI
+- Interactive topology — Network path visualization from device to destination
+- Segment detail panels — Rich information for each network segment
+- Services grid — Monitor multiple endpoints with status cards
+- Troubleshooting wizard — 3-step diagnostic flow
+Known Issues
+- Service monitoring endpoints are not persisted between restarts
+- Dark mode may require app restart after system theme change
+- Some VPN adapters may not be correctly identified
+Requirements
+- Windows 11 (build 22621 or later)
+- WebView2 Runtime (included in Windows 11)
+
+Full release notes: https://networkweather.com/releases/windows/1.1.0/

@@ -1,0 +1,24 @@
+Windows Release
+May 25, 2026
+Version 1.2.0 (104)
+New Looks, Deep Scans, and Smart Router Tools
+Windows
+Requires Windows 11
+-
+Download (x64)
+Welcome to the brand new Network Weather for Windows! This is our biggest update ever. We have completely rewritten the app so it looks and feels just like the macOS version, and we've added awesome new tools to help you understand your home internet.
+Here is a simple look at the major new features available on your Windows device today:
+1. A Beautiful New Look
+We have replaced the old single-screen dashboard with a clean side-menu. You can now easily click through Scan, Insights, Status, and Settings tabs. It makes finding your way around the app simple and fun.
+2. Click-to-Run Network Scans
+You can now start a diagnostic scan whenever you want! Clicking the scan button tests your WiFi signal, your home router, and your internet provider in real-time. The app will give you a clear report detailing any problems it finds.
+3. Smart Router Integration (Eero, UniFi, and More)
+The app is now incredibly smart at recognizing your home router (supporting Netgear Orbi, Asus, TP-Link, D-Link, and Google Nest).
+- If you use Eero: You can log in securely using an SMS or email code right inside the app. You'll be able to see all your Eero mesh nodes, check if any nodes are offline, and audit your WiFi quality.
+- If you use UniFi: You can log in to view active access points, count connected devices, and verify ethernet port negotiation speeds.
+4. Quality Grades for Games, Streaming, and Work
+Wondering if your connection can handle an online game or a video class? The app now grades your network (Ready, Marginal, or Poor) for four activities: Email, Video Calls, Gaming, and Video Streaming. If a grade is low, it tells you exactly why (such as high jitter or packet loss).
+5. In-Flight Satellite Tracker
+If you use the app while flying on a plane (like United or Delta), it automatically detects the onboard satellite internet! It will show a beautiful flight banner with your flight number, altitude, speed, a map progress bar, and even the weather at your destination.
+
+Full release notes: https://networkweather.com/releases/windows/1.2.0/
