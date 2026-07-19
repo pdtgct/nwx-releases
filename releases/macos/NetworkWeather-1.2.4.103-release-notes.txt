@@ -1,0 +1,22 @@
+MACOS RELEASE
+April 29, 2026
+Version 1.2.4 (103)
+Notification log on disk
+
+macOS
+Requires macOS 14+
+
+Download
+Every notification is logged
+Network Weather sometimes shows a notification, like "your Wi-Fi signal is weak" or "your internet is degraded." It now also writes that same notification to a small file on disk:
+~/Library/Logs/NetworkWeather/notifications.jsonl
+Each line is one notification, with the time, your Wi-Fi network name, the access point you were on, the router's MAC, and exactly what was on the screen. The file grows over time and is never trimmed by the app.
+This is for two cases:
+	•	You want to know what the app told you. Open the file in any text editor.
+	•	You are talking to support and they ask "what did the app say at 9 a.m.?" The answer is in the file.
+The same file also records when a notification was suppressed (cooldown, network just changed, you blocked notifications, you turned them off in settings). So if you ever wonder "why did Network Weather not tell me?", that answer is there too.
+The log is a plain JSON-per-line file. If you have jq installed, you can ask it questions:
+tail -f ~/Library/Logs/NetworkWeather/notifications.jsonl | jq .
+jq 'select(.outcome == "delivered")' ~/Library/Logs/NetworkWeather/notifications.jsonl
+Disk meter cleanup
+The available-space numbers shown on the disk meters now match Finder. The diagnostic tools view also reports purgeable space correctly.
