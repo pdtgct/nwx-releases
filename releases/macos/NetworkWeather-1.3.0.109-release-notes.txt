@@ -1,0 +1,38 @@
+MACOS RELEASE
+August 21, 2026
+Version 1.3.0 (109)
+Understand the scan, then inspect the Wi-Fi around you
+
+macOS
+Requires macOS 14+
+
+Download
+A report that explains the whole scan
+A deep scan now ends with a report instead of a loose collection of measurements. It starts with a plain-English health verdict and grades the connection for common activities such as browsing, video calls, and gaming. It then shows the journey from your Mac through the local network and out to the internet, with each finding attached to the part of that journey it actually concerns.
+The report keeps download and upload speeds, latency, jitter, packet loss, and bufferbloat together. Technical details remain available in a collapsed section when you need them, without crowding the main explanation.
+Network Weather uses Gemini through Google Vertex AI to help phrase the report in plain English. The measurements, verdict, and findings are computed before that step. The model cannot add or remove findings, and built-in templates take over if it is unavailable.
+See what is happening on the radio
+The new Radio tab gives you a live view of your Wi-Fi connection and the networks around it. It shows signal, channel, width, Wi-Fi generation, security, roaming support, access-point capabilities, and other details the access points advertise.
+A channel map plots nearby networks by band, channel width, and signal strength so overlap is visible instead of buried in a table. When your network is available on more than one band, a comparison shows the strongest option on each band and marks the access point your Mac is currently using. You can rescan on demand, inspect a neighbor in detail, and expand the full set of technical observations without turning every observation into an alarm.
+Problems to fix, with you in control
+Each finding names the device, network segment, or switch port that its evidence is about. It explains what was observed, what it can affect, and a practical next step. You can mark it I'll Do This, I'll Do Later, or Skip. Those choices persist with the scan.
+Advice is also more careful about what the app really knows. Router settings no longer produce contradictory recommendations, crowded-channel advice names the channel, and end-of-life findings identify the source behind their dates.
+Reports for different rooms and times
+Choose the room when you start a scan, with earlier room names suggested for reuse. Every completed deep scan appears in history as its own report. Reopening an old entry shows the verdict and findings produced by that scan, rather than rebuilding it from whatever the app knows today.
+On Ethernet, the report can name the connected switch through LLDP. On supported UniFi networks, it can show the switch path back to the gateway. When clear evidence shows that a USB or Thunderbolt adapter is limiting a faster connection, the report names the adapter and suggests an upgrade. Without that evidence, it stays quiet.
+Private sharing and email
+When a scan has a hosted copy, the Share button opens its link and passphrase for reports.networkweather.com. Hosted reports are protected by a passphrase, hidden from search engines, and deletable by you. The shared page keeps the readable report up front, with technical accordions and a JSON download for a knowledgeable helper or another analysis tool.
+After you verify your email address, Network Weather emails new hosted reports with a single-use link. The link opens the report once without asking for its passphrase; after that first use it cannot be replayed. If you verify from a report during the same app session in which it was created, the app can also host and email that displayed report from the exact scan request it retained. After a relaunch, verification instead applies to reports created from then on.
+Deleting a hosted report removes the stored report and its access records. A delivery already underway may still be submitted to the provider or complete after deletion, and an email the delivery provider has accepted or delivered cannot be recalled.
+More trustworthy measurements
+This release removes several ways a healthy connection could look broken:
+	•	Packet loss is measured separately from the speed test, with enough samples to support the number shown.
+	•	A backbone router that ignores diagnostic pings no longer becomes a reported internet problem while real web traffic is succeeding.
+	•	Gaming and video grades no longer fail solely because a home router gives ping traffic uneven timing.
+	•	A single dropped background probe no longer turns a service red.
+	•	Slow and cellular connections get more time before a working port is called blocked.
+	•	A very slow speed test reports the bytes that arrived and stops on time. A connection that transfers nothing is shown as unavailable, not 0/0.
+Mesh path latency is shown per link instead of accumulating delay at every hop. Wireless-backhaul advice appears only when current route-bound evidence supports it; otherwise the report leaves the answer unknown.
+Better recovery, with fewer hangs
+Switching networks clears old path measurements, so unreachable hops from the previous router cannot leave the new gateway stuck on Disconnected. VPN provider details clear promptly after a disconnect, and service and ISP state refresh after a captive portal clears or the network changes.
+Wi-Fi scans, reverse-DNS lookups, network-map assembly, gateway cache writes, VPN detection, router announcements, passive device discovery, and UPnP waits no longer tie up the app's interface. Background listeners stop promptly, and abandoned browser sign-ins time out instead of leaving Sign In stuck.
