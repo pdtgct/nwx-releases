@@ -1,0 +1,30 @@
+MACOS RELEASE
+August 30, 2026
+Version 1.3.1 (113)
+Measured honesty
+
+macOS
+Requires macOS 14+
+
+Download
+Automatic Wi-Fi switching is removed, and here is why
+1.3.0 introduced an optional setting that switched you to a stronger access point by turning the Wi-Fi radio off and on. We instrumented it in the field with independent measurement equipment, and the results were damning twice over. The forced reconnect cost 7 to 18 seconds of complete outage and usually landed back on the very access point it was trying to leave. Worse, the suggestions themselves could be built on stale signal readings from wherever you were sitting minutes earlier, nudging macOS toward access points that actually measured 45 dB weaker than believed, causing association ping-pong and long first-hop latency.
+A network tool's first duty is to not make your network worse. So in this release the switching actions, the suggestion banner, its notifications, and the Settings toggle are all removed. The detection engine still runs silently, recording what it would have suggested; when that record proves its suggestions match measured reality, the feature returns, gently and with evidence.
+Relatedly, a brief disconnection no longer produces a false alarm. When the connection drops in the middle of the check that tests which services your network allows, every probe fails at once for lack of a link. Network Weather used to read that as the network blocking DNS, email, SSH, VPN and more; it now recognizes a dead link as no connection rather than a restrictive network.
+See your Tailscale connection clearly
+When Tailscale is your active VPN, the VPN panel now shows what it is actually doing: whether you are using an exit node or mesh only, which exit node and whether it is currently offline, whether your traffic reaches it directly or through a relay, your tailnet name and this device's MagicDNS name, how many peers are online, the client version, and any health warnings the Tailscale daemon reports. A stopped or logged-out daemon is shown as a warning rather than silence.
+These details update the moment something changes, such as toggling an exit node or logging in and out, instead of waiting for a network route change to be noticed.
+Advice that leans on evidence
+	•	Roaming assistance on multi-AP networks: deep scans on UniFi now read the controller's Roaming Assistance settings and flag Fast Roaming (802.11r) or Handoff Suggestions (802.11v) being disabled when there is more than one access point. With 802.11v off, an access point has no way to ask a sticky device to move, which is the most common explanation for a device clinging to a distant access point.
+	•	No spending money without proof: a 100 Mbps Ethernet link now leads to checking the attached device's capability, and a cable replacement is recommended only when the device is known to support a faster link.
+	•	Mesh nodes keep their fallback: Network Weather no longer suggests disabling a mesh node's wireless fallback just because it currently has a wired uplink; that fallback may be the network's only failover path.
+	•	WPA2 is treated as adequate for home networks: WPA3 guidance is informational, appears only when the gateway explicitly reports WPA3 disabled, and notes that older 2.4 GHz and smart-home devices may need compatibility consideration.
+A friendlier first install
+The installer now opens with a short welcome page describing what Network Weather does and what to expect, and ends by pointing you to the app's new cloud icon in the menu bar, replacing the old plain text note.
+Smaller fixes
+	•	Quitting the app no longer discards its last half-minute of operational telemetry; buffered events are sent before exit, without making quitting slow.
+	•	Street addresses no longer appear as room suggestions when starting a scan, and addresses that had already leaked into your room history are cleaned up, while real room names are preserved.
+	•	The scan history list leads with the network you scanned, with the room beneath it, instead of a room name over a generic vendor label.
+	•	Wi-Fi scanning while disconnected retries at a controlled pace instead of racing through its retry schedule, and a stale scan can no longer overwrite newer results after you reconnect.
+	•	Unreliable Mac transmit-power readings are suppressed rather than shown as measurements.
+	•	The packet-capture setup banner now offers the fix that will actually work, distinguishing a stale macOS login session from a missing or broken helper installation, and no longer mistakes Wireshark's capture helper for its own.
